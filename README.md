@@ -1,4 +1,4 @@
 vertesaur.site
 ==============
 
-Vertesaur Website
+A website for Vertesaur
