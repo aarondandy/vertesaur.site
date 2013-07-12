@@ -47,6 +47,10 @@
       <HintPath>..\packages\DandyDoc.Core.0.5.3\lib\net40\DandyDoc.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NuGet.Core, Version=2.6.40619.9041, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NuGet.Core.2.6.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack">
       <HintPath>..\packages\ServiceStack.3.9.54\lib\net35\ServiceStack.dll</HintPath>
     </Reference>
@@ -95,6 +99,22 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\packages\Vertesaur.Core.0.8.5\lib\net40-client\Vertesaur.Core.dll">
+      <Link>Docs\Files\Vertesaur.Core.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Vertesaur.Core.0.8.5\lib\net40-client\Vertesaur.Core.XML">
+      <Link>Docs\Files\Vertesaur.Core.XML</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Vertesaur.Generation.0.8.5\lib\net40-client\Vertesaur.Generation.dll">
+      <Link>Docs\Files\Vertesaur.Generation.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Vertesaur.Generation.0.8.5\lib\net40-client\Vertesaur.Generation.XML">
+      <Link>Docs\Files\Vertesaur.Generation.XML</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
