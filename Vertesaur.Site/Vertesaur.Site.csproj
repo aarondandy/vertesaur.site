@@ -121,6 +121,7 @@
   <ItemGroup>
     <Compile Include="CodeDocApi.cs" />
     <Compile Include="CodeDocRepositories.cs" />
+    <Compile Include="DandyDocHtmlRenderer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -134,6 +135,7 @@
     <Content Include="docs\api\namespaces.cshtml" />
     <Content Include="docs\_Layout.cshtml" />
     <Content Include="Views\_DocsLayout.cshtml" />
+    <Content Include="Views\_ApiDocsLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

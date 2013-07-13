@@ -1,0 +1,15 @@
+﻿@using DandyDoc.CodeDoc
+@inherits ServiceStack.Razor.ViewPage<CodeDocSimpleMember>
+@{
+  Layout = "_DocsLayout";
+  var entityTitle = Model.Title;
+  var entitySubTitle = Model.SubTitle;
+  var contentModel = Model as CodeDocMemberContentBase;
+  ViewBag.SubTitle = "API Reference";
+}
+<section>
+  <h1>TODO: title</h1>
+  
+  TODO: content
+
+</section>
