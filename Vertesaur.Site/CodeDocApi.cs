@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using System.Linq;
 using System.Net;
-using System.Web;
 using DandyDoc.CRef;
 using DandyDoc.CodeDoc;
 using ServiceStack.Common.Web;
@@ -14,7 +11,7 @@ namespace Vertesaur.Site
 {
 
     [Api("Provides documentation models.")]
-    [Route("/Docs/Api")]
+    [Route("/docs/api")]
     public class CodeDocCRefRequest
     {
         public string CRef { get; set; }
