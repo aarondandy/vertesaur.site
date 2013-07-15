@@ -1,0 +1,10 @@
+﻿@using DandyDoc.CodeDoc
+@inherits ServiceStack.Razor.ViewPage<IEnumerable<CodeDocParameter>>
+<dl>
+  @foreach (var parameter in Model) {
+    <dt>@parameter.Name</dt>
+    <dd>
+      @{ Html.Partial("PartialCodeDocParameterDetails", parameter);}
+    </dd>
+  }
+</dl>

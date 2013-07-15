@@ -1,0 +1,41 @@
+﻿@using DandyDoc.CodeDoc
+@inherits ServiceStack.Razor.ViewPage<ICodeDocInvokable>
+@{
+
+  if (Model.HasParameters) {
+    <section>
+      <h2>Parameters</h2>
+      @{
+        Html.Partial("PartialCodeDocParameterList", Model.Parameters);
+      }
+    </section>
+  }
+
+  if (Model.HasReturn) {
+    <section>
+      <h2>Returns</h2>
+      @{
+        Html.Partial("PartialCodeDocParameterDetails", Model.Return);
+      }
+    </section>
+  }
+  
+  if (Model.HasExceptions) {
+    <section>
+      <h2>Exceptions</h2>
+      @{
+        Html.Partial("PartialCodeDocExceptionTable", Model.Exceptions);
+      }
+    </section>
+  }
+  
+  if (Model.HasNormalTerminationEnsures) {
+    <section>
+      <h2>Ensures on Successful Execution</h2>
+      @{
+        Html.Partial("PartialCodeDocSimpleCodeContractTable", Model.NormalTerminationEnsures);
+      }
+    </section>
+  }
+  
+}

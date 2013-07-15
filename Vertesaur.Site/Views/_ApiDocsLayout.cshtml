@@ -3,7 +3,7 @@
 @inherits ServiceStack.Razor.ViewPage<CodeDocSimpleMember>
 @{
   Layout = "_DocsLayout";
-  
+
   var entityTitle = Model.Title;
   var entitySubTitle = Model.SubTitle;
 
@@ -14,7 +14,7 @@
     }
     ViewBag.Title = pageTitle;
   }
-  
+
   var contentModel = Model as CodeDocMemberContentBase;
   ViewBag.SubTitle = "API Reference";
 }
@@ -25,13 +25,81 @@
       <small>@entitySubTitle</small>
     }
   </h1>
-  
+
   @if (Model.HasSummaryContents) {
     <p>@this.XmlDocHtml(Model.SummaryContents)</p>
   }
   
+  @if (contentModel != null) {
+        
+    if (contentModel.Namespace != null) {
+      <div>Namespace: @this.ActionLinkFull(contentModel.Namespace)</div>
+    }
+        
+    if (contentModel.Assembly != null) {
+      var assemblyText = contentModel.Assembly.AssemblyFileName;
+      if (String.IsNullOrWhiteSpace(assemblyText)) {
+        assemblyText = contentModel.Assembly.Title;
+      }
+      if (!String.IsNullOrWhiteSpace(assemblyText)) {
+        <div>Assembly: @assemblyText</div>
+      }
+    }
+        
+    if (contentModel.DeclaringType != null) {
+      <div>Declaring Type: @this.ActionLinkFull(contentModel.DeclaringType)</div>
+    }
+        
+  }
+
   @DandyDocHtmlRenderer.FlairTable(Model)
-  
+
   @RenderBody()
+
+  @if (contentModel != null) {
+
+    if (contentModel.HasRemarks) {
+    <section>
+      <h2>Remarks</h2>
+      @foreach (var section in contentModel.Remarks.Where(x => x.HasChildren)) {
+        <div>
+          @this.XmlDocHtml(section.Children)
+        </div>
+      }
+    </section>
+    }
+
+    if (contentModel.HasExamples) {
+    <section>
+      <h2>Examples</h2>
+      @foreach (var section in contentModel.Examples.Where(x => x.HasChildren)) {
+        <div>
+          @this.XmlDocHtml(section.Children)
+        </div>
+      }
+    </section>
+    }
+
+    if (contentModel.HasSeeAlso) {
+    <section>
+      <h2>See Also</h2>
+      <ul>
+        @foreach (var section in contentModel.SeeAlso) {
+          <li>
+            @this.XmlDocHtml(section)
+          </li>
+        }
+      </ul>
+    </section>
+    }
+
+  }
+
+  @{
+    var uriString = new UriBuilder("https://github.com/aarondandy/vertesaur/issues/new") {
+      Query = String.Format("title=[docs]:+{0}&labels=docs&body=CRef:+{0}", Uri.EscapeDataString(Model.CRef.ToString()))
+    }.ToString();
+    <div><a href="@uriString" target="_blank" title="Report an issue with this documentation." rel="nofollow">Report Documentation Issue</a></div>
+  }
 
 </section>

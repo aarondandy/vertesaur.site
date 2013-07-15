@@ -3,6 +3,6 @@
 @inherits ServiceStack.Razor.ViewPage<IEnumerable<ICodeDocMember>>
 <ul>
   @foreach (var namespaceModel in Model) {
-    <li>@this.ActionLink(namespaceModel)</li>
+    <li>@(this.ActionLink(namespaceModel))</li>
   }
 </ul>

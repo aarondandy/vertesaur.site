@@ -18,7 +18,7 @@ namespace Vertesaur.Site
     public static class DandyDocHtmlRenderer
     {
 
-        private static readonly string TableCssClass = "table table-bordered table-condensed";
+        private static readonly string TableCssClass = "";
 
         private static readonly HtmlString EmptyHtmlString = new HtmlString(String.Empty);
         private static readonly Regex CodeNameSplitRegex = new Regex(@"(?<=[.,;\<\(\[])");
@@ -77,6 +77,10 @@ namespace Vertesaur.Site
             Contract.Requires(member != null);
             Contract.Ensures(Contract.Result<HtmlString>() != null);
             return new HtmlString(HttpUtility.HtmlEncode(member.ShortName));
+        }
+
+        public static HtmlString ActionLinkFull<T>(this ViewPageBase<T> viewPage, ICodeDocMember member) where T : class {
+            return viewPage.ActionLink(member, GetMemberTextFull(member));
         }
 
         public static HtmlString ActionLink<T>(this ViewPageBase<T> viewPage, ICodeDocMember member, HtmlString linkText = null) where T : class {
@@ -262,7 +266,6 @@ namespace Vertesaur.Site
 
         #endregion
 
-
         #region Flair
 
         public class FlairItem
@@ -389,7 +392,7 @@ namespace Vertesaur.Site
             return new HtmlString(tagbuilder.ToString());
         }
 
-        private static IEnumerable<FlairItem> GetFlair(ICodeDocMember member) {
+        public static IEnumerable<FlairItem> GetFlair(ICodeDocMember member) {
             Contract.Requires(member != null);
 
             var content = member as CodeDocMemberContentBase;

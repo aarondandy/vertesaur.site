@@ -1,0 +1,26 @@
+﻿@using DandyDoc.XmlDoc
+@using Vertesaur.Site
+@inherits ServiceStack.Razor.ViewPage<IEnumerable<XmlDocContractElement>>
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var contract in Model) {
+      <tr>
+        <td>@(this.XmlDocHtml(contract.Children))</td>
+        <td>
+          @{
+            var code = contract.CSharp ?? contract.VisualBasic;
+            if (!String.IsNullOrWhiteSpace(code)) {
+              <code>@code</code>
+            }
+          }
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

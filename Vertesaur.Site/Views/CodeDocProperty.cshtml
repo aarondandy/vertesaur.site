@@ -1,0 +1,47 @@
+﻿@using DandyDoc.CodeDoc
+@using Vertesaur.Site
+@inherits ServiceStack.Razor.ViewPage<CodeDocProperty>
+@{
+  Layout = "_ApiDocsLayout";
+}
+@functions {
+
+  public bool CodeDocAccessorIsWorthDisplaying(CodeDocMethod accessor) {
+    if (accessor == null) {
+      return false;
+    }
+    
+    return DandyDocHtmlRenderer.GetFlair(accessor).Any()
+      || accessor.HasExceptions
+      || accessor.HasNormalTerminationEnsures
+      || accessor.HasRequires;
+  }
+
+}
+<section>
+  <h2>Value</h2>
+  <dl>
+    <dt>Type</dt>
+    <dd>@(this.ActionLinkFull(Model.ValueType))</dd>
+  </dl>
+
+  @if (Model.HasValueDescriptionContents) {
+    <div>@(this.XmlDocHtml(Model.ValueDescriptionContents))</div>
+  }
+</section>
+@if (Model.HasGetter && CodeDocAccessorIsWorthDisplaying(Model.Getter)) {
+  <section>
+    <h2>Getter</h2>
+    @{
+      Html.Partial("PartialCodeDocAccessor", Model.Getter);
+    }
+  </section>
+}
+@if (Model.HasSetter && CodeDocAccessorIsWorthDisplaying(Model.Setter)) {
+  <section>
+    <h2>Setter</h2>
+    @{
+      Html.Partial("PartialCodeDocAccessor", Model.Setter);
+    }
+  </section>
+}

@@ -1,0 +1,7 @@
+﻿@using DandyDoc.CodeDoc
+@using Vertesaur.Site
+@inherits ServiceStack.Razor.ViewPage<CodeDocParameter>
+@if (Model.HasSummaryContents) {
+  <div>@this.XmlDocHtml(Model.SummaryContents)</div>
+}
+<div>Type: @(this.ActionLinkFull(Model.ParameterType))</div>

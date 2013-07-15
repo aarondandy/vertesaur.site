@@ -6,7 +6,7 @@
     <dd>
       @{
         if (parameter.HasSummaryContents) {
-          <p>@this.XmlDocHtml(parameter.SummaryContents)</p>
+          <p>@(this.XmlDocHtml(parameter.SummaryContents))</p>
         }
         if (parameter.IsContravariant.GetValueOrDefault()) {
           <div>Contravariant: Type is used for input and can be used with a more specific type.</div>
@@ -32,7 +32,7 @@
                 
                 if (parameter.HasTypeConstraints) {
                   foreach (var typeConstraint in parameter.TypeConstraints) {
-                    <li>@this.ActionLink(typeConstraint)</li>
+                    <li>@(this.ActionLink(typeConstraint))</li>
                   }
                 }
                 

@@ -1,0 +1,64 @@
+﻿@using System.Text
+@using DandyDoc.CodeDoc
+@using DandyDoc.XmlDoc
+@using Vertesaur.Site
+@inherits ServiceStack.Razor.ViewPage<IEnumerable<CodeDocException>>
+
+@functions {
+
+  protected System.Web.HtmlString XmlDocHtmlChildListOrSingle(IList<XmlDocNode> nodes) {
+    if (nodes.Count == 1) {
+      return this.XmlDocHtml(nodes[0].Children);
+    }
+    else if (nodes.Count > 0) {
+      var sb = new StringBuilder("<ul>");
+      foreach(var node in nodes){
+        sb.Append("<li>");
+        sb.Append(this.XmlDocHtml(node.Children));
+        sb.Append("</li>");
+      }
+      sb.Append("</ul>");
+      return new System.Web.HtmlString(sb.ToString());
+    }
+    return new System.Web.HtmlString(String.Empty);
+  }
+
+}
+
+<table>
+  <thead>
+    <tr>
+      <th>Exception</th>
+      <th>Condition</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var exception in Model) {
+      <tr>
+        <td>@(this.ActionLink(exception.ExceptionType))</td>
+        <td>
+          @{
+            var conditions = exception.HasConditions ? exception.Conditions.Where(x => x.HasChildren).ToList() : new List<XmlDocNode>(0);
+            var ensures = exception.HasEnsures ? exception.Ensures.Where(x => x.HasChildren).ToList() : new List<XmlDocNode>(0);
+
+            if (conditions.Count == 1 && ensures.Count == 0) {
+              @(this.XmlDocHtml(conditions[0].Children));
+            }
+            else {
+              <dl>
+                @if (conditions.Count > 0) {
+                  <dt>Conditions</dt>
+                  <dd>@XmlDocHtmlChildListOrSingle(conditions)</dd>
+                }
+                @if (ensures.Count > 0) {
+                  <dt>Ensures</dt>
+                  <dd>@XmlDocHtmlChildListOrSingle(ensures)</dd>
+                }
+              </dl>
+            }
+          }
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

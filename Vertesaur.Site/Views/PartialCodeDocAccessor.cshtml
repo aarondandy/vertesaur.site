@@ -1,0 +1,30 @@
+﻿@using DandyDoc.CodeDoc
+@using Vertesaur.Site
+@inherits ServiceStack.Razor.ViewPage<CodeDocMethod>
+
+@DandyDocHtmlRenderer.FlairTable(Model)
+
+@if (Model.HasExceptions) {
+  <section>
+    <h3>Exceptions</h3>
+    @{
+      Html.Partial("PartialCodeDocExceptionTable", Model.Exceptions);
+    }
+  </section>
+}
+@if (Model.HasRequires) {
+  <section>
+    <h3>Requires</h3>
+    @{
+      Html.Partial("PartialCodeDocSimpleCodeContractTable", Model.Exceptions);
+    }
+  </section>
+}
+@if (Model.HasNormalTerminationEnsures) {
+  <section>
+    <h3>Ensures on Successful Execution</h3>
+    @{
+      Html.Partial("PartialCodeDocSimpleCodeContractTable", Model.NormalTerminationEnsures);
+    }
+  </section>
+}

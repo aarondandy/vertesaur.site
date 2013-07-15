@@ -13,7 +13,7 @@
     @foreach (var entityModel in Model) {
       <tr>
         <td>@DandyDocHtmlRenderer.FlairIconList(entityModel)</td>
-        <td>@this.ActionLink(entityModel)</td>
+        <td>@(this.ActionLink(entityModel))</td>
         <td>
           @if (entityModel.HasSummaryContents) {
             @(this.XmlDocHtml(entityModel.SummaryContents))

@@ -119,6 +119,11 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Views\CodeDocDelegate.cshtml" />
+    <Content Include="Views\CodeDocEvent.cshtml" />
+    <Content Include="Views\CodeDocField.cshtml" />
+    <Content Include="Views\CodeDocMethod.cshtml" />
+    <Content Include="Views\CodeDocProperty.cshtml" />
+    <Content Include="Views\PartialCodeDocAccessor.cshtml" />
     <None Include="Views\PartialCodeDocEntityList.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -144,6 +149,11 @@
     <Content Include="Views\PartialCodeDocEntityTable.cshtml" />
     <Content Include="Views\CodeDocType.cshtml" />
     <Content Include="Views\PartialCodeDocGenericParameterList.cshtml" />
+    <Content Include="Views\PartialCodeDocInvokable.cshtml" />
+    <Content Include="Views\PartialCodeDocParameterList.cshtml" />
+    <Content Include="Views\PartialCodeDocParameterDetails.cshtml" />
+    <Content Include="Views\PartialCodeDocExceptionTable.cshtml" />
+    <Content Include="Views\PartialCodeDocSimpleCodeContractTable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
