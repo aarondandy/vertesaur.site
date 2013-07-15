@@ -1,15 +1,37 @@
 ﻿@using DandyDoc.CodeDoc
+@using Vertesaur.Site
 @inherits ServiceStack.Razor.ViewPage<CodeDocSimpleMember>
 @{
   Layout = "_DocsLayout";
+  
   var entityTitle = Model.Title;
   var entitySubTitle = Model.SubTitle;
+
+  var pageTitle = entityTitle;
+  if (!String.IsNullOrWhiteSpace(pageTitle)) {
+    if (!String.IsNullOrWhiteSpace(entitySubTitle)) {
+      pageTitle += ' ' + entitySubTitle;
+    }
+    ViewBag.Title = pageTitle;
+  }
+  
   var contentModel = Model as CodeDocMemberContentBase;
   ViewBag.SubTitle = "API Reference";
 }
 <section>
-  <h1>TODO: title</h1>
+  <h1>
+    @DandyDocHtmlRenderer.BreakIntoCodeNamePartElements(entityTitle)
+    @if (!String.IsNullOrWhiteSpace(entitySubTitle)) {
+      <small>@entitySubTitle</small>
+    }
+  </h1>
   
-  TODO: content
+  @if (Model.HasSummaryContents) {
+    <p>@this.XmlDocHtml(Model.SummaryContents)</p>
+  }
+  
+  @DandyDocHtmlRenderer.FlairTable(Model)
+  
+  @RenderBody()
 
 </section>

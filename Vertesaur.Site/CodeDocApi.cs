@@ -4,6 +4,7 @@ using System.Net;
 using DandyDoc.CRef;
 using DandyDoc.CodeDoc;
 using ServiceStack.Common.Web;
+using ServiceStack.Html;
 using ServiceStack.ServiceHost;
 using ServiceStack.ServiceInterface;
 
@@ -22,15 +23,18 @@ namespace Vertesaur.Site
 
         public CodeDocRepositories Repositories { get; set; }
 
-        public CodeDocSimpleMember Any(CodeDocCRefRequest request) {
+        public IHttpResult Any(CodeDocCRefRequest request) {
             if (request == null) throw new ArgumentNullException("request");
-            if (String.IsNullOrEmpty(request.CRef)) throw new ArgumentException("Code reference (CRef) not provided.", "request");
             Contract.EndContractBlock();
+
+            if (String.IsNullOrEmpty(request.CRef))
+                return this.Redirect(new UrlHelper().Content("~/docs/api/namespaces"));
 
             var model = Repositories.GetModelFromTarget(new CRefIdentifier(request.CRef)) as CodeDocSimpleMember;
             if (model == null)
                 throw new HttpError(HttpStatusCode.NotFound, "Documentation model could not be found.");
-            return model;
+
+            return new HttpResult(model);
         }
 
     }

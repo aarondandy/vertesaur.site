@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Web.Hosting;
 using DandyDoc.CRef;
@@ -26,8 +28,8 @@ namespace Vertesaur.Site
         }
 
         public CodeDocRepositories() {
-            
-            SupportingRepository = new CodeDocRepositoryFailureProtectionWrapper(new MsdnCodeDocMemberRepository(), new TimeSpan(0, 0, 10));
+
+            SupportingRepository = null; //SupportingRepository = new CodeDocRepositoryFailureProtectionWrapper(new MsdnCodeDocMemberRepository(), new TimeSpan(0, 0, 10));
             TargetRepository = new ReflectionCodeDocMemberRepository(
                 new ReflectionCRefLookup(
                     Assembly.ReflectionOnlyLoadFrom(HostingEnvironment.MapPath("~/bin/Docs/Files/Vertesaur.Core.dll")),
@@ -42,10 +44,14 @@ namespace Vertesaur.Site
 
         public ICodeDocMemberRepository SupportingRepository { get; private set; }
 
+        private IEnumerable<ICodeDocMemberRepository> GetAllRepositories() {
+            return new[] {TargetRepository, SupportingRepository}.Where(x => x != null);
+        }
+
         public ICodeDocMember GetModelFromTarget(CRefIdentifier cRef, CodeDocMemberDetailLevel detailLevel = CodeDocMemberDetailLevel.Full) {
             if (cRef == null) throw new ArgumentNullException("cRef");
             Contract.EndContractBlock();
-            return new CodeDocRepositorySearchContext(new[] { TargetRepository, SupportingRepository }, detailLevel)
+            return new CodeDocRepositorySearchContext(GetAllRepositories(), detailLevel)
                 .CloneWithOneUnvisited(TargetRepository)
                 .Search(cRef);
         }
@@ -53,7 +59,7 @@ namespace Vertesaur.Site
         public ICodeDocMember GetModelFromAny(CRefIdentifier cRef, CodeDocMemberDetailLevel detailLevel = CodeDocMemberDetailLevel.Full) {
             if (cRef == null) throw new ArgumentNullException("cRef");
             Contract.EndContractBlock();
-            return new CodeDocRepositorySearchContext(new[]{TargetRepository, SupportingRepository}, detailLevel).Search(cRef);
+            return new CodeDocRepositorySearchContext(GetAllRepositories(), detailLevel).Search(cRef);
         }
 
 

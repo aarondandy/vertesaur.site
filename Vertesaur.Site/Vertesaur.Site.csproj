@@ -40,10 +40,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DandyDoc.CodeDoc">
+    <Reference Include="DandyDoc.CodeDoc, Version=0.5.3.41045, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DandyDoc.CodeDoc.0.5.3\lib\net40\DandyDoc.CodeDoc.dll</HintPath>
     </Reference>
-    <Reference Include="DandyDoc.Core">
+    <Reference Include="DandyDoc.Core, Version=0.5.3.41035, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DandyDoc.Core.0.5.3\lib\net40\DandyDoc.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -100,22 +102,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\packages\Vertesaur.Core.0.8.5\lib\net40-client\Vertesaur.Core.dll">
-      <Link>Docs\Files\Vertesaur.Core.dll</Link>
+      <Link>docs\Files\Vertesaur.Core.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\packages\Vertesaur.Core.0.8.5\lib\net40-client\Vertesaur.Core.XML">
-      <Link>Docs\Files\Vertesaur.Core.XML</Link>
+      <Link>docs\Files\Vertesaur.Core.XML</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\packages\Vertesaur.Generation.0.8.5\lib\net40-client\Vertesaur.Generation.dll">
-      <Link>Docs\Files\Vertesaur.Generation.dll</Link>
+      <Link>docs\Files\Vertesaur.Generation.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\packages\Vertesaur.Generation.0.8.5\lib\net40-client\Vertesaur.Generation.XML">
-      <Link>Docs\Files\Vertesaur.Generation.XML</Link>
+      <Link>docs\Files\Vertesaur.Generation.XML</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Views\CodeDocDelegate.cshtml" />
+    <None Include="Views\PartialCodeDocEntityList.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +140,10 @@
     <Content Include="docs\_Layout.cshtml" />
     <Content Include="Views\_DocsLayout.cshtml" />
     <Content Include="Views\_ApiDocsLayout.cshtml" />
+    <Content Include="Views\CodeDocNamespace.cshtml" />
+    <Content Include="Views\PartialCodeDocEntityTable.cshtml" />
+    <Content Include="Views\CodeDocType.cshtml" />
+    <Content Include="Views\PartialCodeDocGenericParameterList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -160,7 +168,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3583</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3350/vertesaur</IISUrl>
+          <IISUrl>http://localhost:3351/vertesaur</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

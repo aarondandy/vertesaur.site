@@ -1,0 +1,46 @@
+﻿@using Vertesaur.Site
+@inherits ServiceStack.Razor.ViewPage<IEnumerable<DandyDoc.CodeDoc.CodeDocGenericParameter>>
+<dl>
+  @foreach (var parameter in Model) {
+    <dt>@parameter.Name</dt>
+    <dd>
+      @{
+        if (parameter.HasSummaryContents) {
+          <p>@this.XmlDocHtml(parameter.SummaryContents)</p>
+        }
+        if (parameter.IsContravariant.GetValueOrDefault()) {
+          <div>Contravariant: Type is used for input and can be used with a more specific type.</div>
+        }
+        if (parameter.IsCovariant.GetValueOrDefault()) {
+          <div>Covariant: Type is used for output and can be used as a more general type.</div>
+        }
+        if (parameter.HasAnyConstraints) {
+          <div>
+            Constraints:
+            <ul>
+              @{
+                if (parameter.HasDefaultConstructorConstraint.GetValueOrDefault()) {
+                  <li>Default Constructor</li>
+                }
+                
+                if (parameter.HasNotNullableValueTypeConstraint.GetValueOrDefault()) {
+                  <li>Value Type</li>
+                }
+                else if (parameter.HasReferenceTypeConstraint.GetValueOrDefault()) {
+                  <li>Reference Type</li>
+                }
+                
+                if (parameter.HasTypeConstraints) {
+                  foreach (var typeConstraint in parameter.TypeConstraints) {
+                    <li>@this.ActionLink(typeConstraint)</li>
+                  }
+                }
+                
+              }
+            </ul>
+          </div>
+        }
+      }
+    </dd>
+  }
+</dl>

@@ -1,18 +1,28 @@
 ﻿@inherits ServiceStack.Razor.ViewPage
+@{
+  
+  var pageTitle = "Vertesaur";
+  if (!String.IsNullOrWhiteSpace(ViewBag.Title)) {
+    pageTitle = pageTitle + ": " + ViewBag.Title;
+  }
+}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+  <title>@pageTitle</title>
 </head>
-  <body>
-    <h1>General Site Template Title</h1>
+<body>
+  <header>
+    <h1>Vertesaur</h1>
+    @if (!String.IsNullOrWhiteSpace(ViewBag.SubTitle)) {
+      <div>@ViewBag.SubTitle</div>
+    }
+  </header>
+  @RenderBody()
 
-    @RenderBody()
-
-    <div>
-      <small>
-        Footer area, probably best to use as a pile of links or to ommit entirely.
-      </small>
-    </div>
-  </body>
+  <footer>
+    <small>Footer area, probably best to use as a pile of links or to ommit entirely.
+    </small>
+  </footer>
+</body>
 </html>

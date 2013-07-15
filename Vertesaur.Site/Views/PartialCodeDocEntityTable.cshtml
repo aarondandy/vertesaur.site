@@ -1,0 +1,25 @@
+﻿@using DandyDoc.CodeDoc
+@using Vertesaur.Site
+@inherits ServiceStack.Razor.ViewPage<IEnumerable<ICodeDocMember>>
+<table>
+  <thead>
+    <tr>
+      <th>i</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var entityModel in Model) {
+      <tr>
+        <td>@DandyDocHtmlRenderer.FlairIconList(entityModel)</td>
+        <td>@this.ActionLink(entityModel)</td>
+        <td>
+          @if (entityModel.HasSummaryContents) {
+            @(this.XmlDocHtml(entityModel.SummaryContents))
+          }
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
