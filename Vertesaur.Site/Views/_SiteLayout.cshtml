@@ -1,28 +1,47 @@
 ﻿@inherits ServiceStack.Razor.ViewPage
 @{
   
-  var pageTitle = "Vertesaur";
-  if (!String.IsNullOrWhiteSpace(ViewBag.Title)) {
-    pageTitle = pageTitle + ": " + ViewBag.Title;
-  }
+    var pageTitle = "Vertesaur";
+    if (!String.IsNullOrWhiteSpace(ViewBag.Title))
+    {
+        pageTitle = pageTitle + ": " + ViewBag.Title;
+    }
 }
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>@pageTitle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@pageTitle</title>
+    <link href="@Url.Content("~/css/bootstrap.spruce.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/bootstrap-responsive.min.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <header>
-    <h1>Vertesaur</h1>
-    @if (!String.IsNullOrWhiteSpace(ViewBag.SubTitle)) {
-      <div>@ViewBag.SubTitle</div>
-    }
-  </header>
-  @RenderBody()
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <header>
+                    <h1><img src="@Url.Content("~/img/dinoweb.png")" height="64" width="64" /> Vertesaur</h1>
+                    @if (!String.IsNullOrWhiteSpace(ViewBag.SubTitle))
+                    {
+                        <h2>@ViewBag.SubTitle</h2>
+                    }
+                </header>
+            </div>
+        </div>
+    </div>
 
-  <footer>
-    <small>Footer area, probably best to use as a pile of links or to ommit entirely.
-    </small>
-  </footer>
+    @RenderBody()
+
+    <div class="container">
+        <div class="row">
+            <footer class="span12">
+                Footer area, probably best to use as a pile of links or to ommit entirely.
+            </footer>
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/bootstrap.min.js")" type="text/javascript"></script>
+
 </body>
 </html>

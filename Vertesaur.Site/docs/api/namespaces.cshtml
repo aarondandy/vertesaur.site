@@ -1,10 +1,13 @@
 ﻿@using Vertesaur.Site
 @inherits ServiceStack.Razor.ViewPage
 @{
+  Layout = "_DocsLayout";
   ViewBag.Title = "All Namespaces";
   var codeDocRepositories = AppHost.TryResolve<CodeDocRepositories>();
 }
-<section>
+<div class="container">
+<div class="row">
+<section class="span12">
   <h1>All Namespaces</h1>
   @if (codeDocRepositories == null) {
     <p>Code documentation is not available.</p>
@@ -13,3 +16,5 @@
     Html.Partial("PartialCodeDocEntityList", codeDocRepositories.TargetRepository.Namespaces);
   }
 </section>
+</div>
+</div>

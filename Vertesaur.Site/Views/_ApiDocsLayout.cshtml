@@ -4,7 +4,7 @@
 @{
   Layout = "_DocsLayout";
 
-  var entityTitle = Model.Title;
+  string entityTitle = Model.Title;
   var entitySubTitle = Model.SubTitle;
 
   var pageTitle = entityTitle;
@@ -18,13 +18,15 @@
   var contentModel = Model as CodeDocMemberContentBase;
   ViewBag.SubTitle = "API Reference";
 }
-<section>
-  <h1>
-    @DandyDocHtmlRenderer.BreakIntoCodeNamePartElements(entityTitle)
-    @if (!String.IsNullOrWhiteSpace(entitySubTitle)) {
-      <small>@entitySubTitle</small>
-    }
-  </h1>
+<div class="container">
+<div class="row">
+<section class="span12">
+    <h1>
+        @DandyDocHtmlRenderer.BreakIntoCodeNamePartElements(entityTitle)
+        @if (!String.IsNullOrWhiteSpace(entitySubTitle)) {
+          <small>@entitySubTitle</small>
+        }
+    </h1>
 
   @if (Model.HasSummaryContents) {
     <p>@this.XmlDocHtml(Model.SummaryContents)</p>
@@ -103,3 +105,5 @@
   }
 
 </section>
+</div>
+</div>
