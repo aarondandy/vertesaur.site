@@ -1,0 +1,3 @@
+[submodule "Vertesaur.Site/docs/wiki"]
+	path = Vertesaur.Site/docs/wiki
+	url = git@github.com:aarondandy/vertesaur.wiki.git
