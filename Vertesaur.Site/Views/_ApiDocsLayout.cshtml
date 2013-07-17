@@ -101,7 +101,7 @@
     var uriString = new UriBuilder("https://github.com/aarondandy/vertesaur/issues/new") {
       Query = String.Format("title=[docs]:+{0}&labels=docs&body=CRef:+{0}", Uri.EscapeDataString(Model.CRef.ToString()))
     }.ToString();
-    <div><a href="@uriString" target="_blank" title="Report an issue with this documentation." rel="nofollow">Report Documentation Issue</a></div>
+    <div id="codeDocFooter"><a href="@uriString" target="_blank" title="Report an issue with this documentation." rel="nofollow">Report Documentation Issue</a></div>
   }
 
 </section>

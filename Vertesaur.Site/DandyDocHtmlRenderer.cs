@@ -332,8 +332,7 @@ namespace Vertesaur.Site
         };
 
         public static HtmlString IconTag(string iconClassName, string title = null) {
-            return new HtmlString("<span>" + iconClassName + "</span>");
-            // return new HtmlString("<i class=\"" + iconClassName + " flair-icon\" title=\"" + (item.IconId ?? String.Empty) + "\"></i>");
+            return new HtmlString("<i class=\"" + iconClassName + " flair-icon\" title=\"" + (title ?? iconClassName) + "\"></i>");
         }
 
         public static HtmlString FlairIcon(FlairItem item) {

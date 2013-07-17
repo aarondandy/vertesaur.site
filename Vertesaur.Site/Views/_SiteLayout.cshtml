@@ -14,31 +14,30 @@
     <title>@pageTitle</title>
     <link href="@Url.Content("~/css/bootstrap.spruce.min.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/bootstrap-responsive.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <header>
-                    <h1><img src="@Url.Content("~/img/dinoweb.png")" height="64" width="64" /> Vertesaur</h1>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="span1">
+                    <img src="@Url.Content("~/img/dinoweb.png")" height="62" />
+                </div>
+                <div class="span11">
+                    <h1>Vertesaur
                     @if (!String.IsNullOrWhiteSpace(ViewBag.SubTitle))
                     {
-                        <h2>@ViewBag.SubTitle</h2>
+                        <small>@ViewBag.SubTitle</small>
                     }
-                </header>
+                    </h1>
+                </div>
             </div>
         </div>
-    </div>
+    </header>
 
     @RenderBody()
 
-    <div class="container">
-        <div class="row">
-            <footer class="span12">
-                Footer area, probably best to use as a pile of links or to ommit entirely.
-            </footer>
-        </div>
-    </div>
+    
 
     <script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
     <script src="@Url.Content("~/js/bootstrap.min.js")" type="text/javascript"></script>

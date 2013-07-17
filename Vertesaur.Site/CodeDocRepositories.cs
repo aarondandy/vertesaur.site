@@ -29,7 +29,7 @@ namespace Vertesaur.Site
 
         public CodeDocRepositories() {
 
-            SupportingRepository = null; //SupportingRepository = new CodeDocRepositoryFailureProtectionWrapper(new MsdnCodeDocMemberRepository(), new TimeSpan(0, 0, 10));
+            SupportingRepository = new CodeDocRepositoryFailureProtectionWrapper(new MsdnCodeDocMemberRepository(), new TimeSpan(0, 0, 10));
             TargetRepository = new ReflectionCodeDocMemberRepository(
                 new ReflectionCRefLookup(
                     Assembly.ReflectionOnlyLoadFrom(HostingEnvironment.MapPath("~/bin/Docs/Files/Vertesaur.Core.dll")),

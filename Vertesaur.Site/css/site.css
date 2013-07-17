@@ -1,0 +1,31 @@
+﻿header {
+    background-color: #a89376;
+    
+}
+
+#contentContainer {
+    background-color: #c6ffe4;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.lead {
+    font-size: 35px;
+    line-height: normal;
+    padding: 50px 0;
+}
+
+.center {
+    text-align: center;
+}
+
+header img {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#codeDocFooter {
+    padding-top: 10px;
+}
+
+
