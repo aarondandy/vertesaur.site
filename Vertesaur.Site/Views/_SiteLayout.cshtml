@@ -1,17 +1,18 @@
 ﻿@inherits ServiceStack.Razor.ViewPage
 @{
-  
-    var pageTitle = "Vertesaur";
-    if (!String.IsNullOrWhiteSpace(ViewBag.Title))
-    {
-        pageTitle = pageTitle + ": " + ViewBag.Title;
-    }
+  var titleBarTitle = "Vertesaur";
+  if (!String.IsNullOrWhiteSpace(ViewBag.TitleBarSubTitle)) {
+    titleBarTitle += ": " + ViewBag.TitleBarSubTitle;
+  }
+  else if (!String.IsNullOrWhiteSpace(ViewBag.Title)) {
+    titleBarTitle += ": " + ViewBag.Title;
+  }
 }
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@pageTitle</title>
+    <title>@titleBarTitle</title>
     <link href="@Url.Content("~/css/bootstrap.spruce.min.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/bootstrap-responsive.min.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
@@ -25,9 +26,8 @@
                 </div>
                 <div class="span11">
                     <h1>Vertesaur
-                    @if (!String.IsNullOrWhiteSpace(ViewBag.SubTitle))
-                    {
-                        <small>@ViewBag.SubTitle</small>
+                    @if (!String.IsNullOrWhiteSpace(ViewBag.Title)){
+                        <small>@ViewBag.Title</small>
                     }
                     </h1>
                 </div>
@@ -36,8 +36,6 @@
     </header>
 
     @RenderBody()
-
-    
 
     <script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
     <script src="@Url.Content("~/js/bootstrap.min.js")" type="text/javascript"></script>

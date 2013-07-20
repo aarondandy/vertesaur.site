@@ -3,6 +3,7 @@
 @inherits ServiceStack.Razor.ViewPage<CodeDocSimpleMember>
 @{
   Layout = "_DocsLayout";
+  ViewBag.Title = "API Reference";
 
   string entityTitle = Model.Title;
   var entitySubTitle = Model.SubTitle;
@@ -12,11 +13,12 @@
     if (!String.IsNullOrWhiteSpace(entitySubTitle)) {
       pageTitle += ' ' + entitySubTitle;
     }
-    ViewBag.Title = pageTitle;
   }
 
+  ViewBag.TitleBarSubTitle = pageTitle;
+  
   var contentModel = Model as CodeDocMemberContentBase;
-  ViewBag.SubTitle = "API Reference";
+  
 }
 <div class="container">
 <div class="row">
@@ -101,7 +103,9 @@
     var uriString = new UriBuilder("https://github.com/aarondandy/vertesaur/issues/new") {
       Query = String.Format("title=[docs]:+{0}&labels=docs&body=CRef:+{0}", Uri.EscapeDataString(Model.CRef.ToString()))
     }.ToString();
-    <div id="codeDocFooter"><a href="@uriString" target="_blank" title="Report an issue with this documentation." rel="nofollow">Report Documentation Issue</a></div>
+    <div id="codeDocFooter">
+      <small><a href="@uriString" target="_blank" title="Report an issue with this documentation." rel="nofollow">Report a documentation issue.</a></small>
+    </div>
   }
 
 </section>

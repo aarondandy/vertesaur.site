@@ -18,7 +18,8 @@ namespace Vertesaur.Site
     public static class DandyDocHtmlRenderer
     {
 
-        private static readonly string TableCssClass = "";
+        private static readonly string TableCssClass = "table table-bordered";
+        private static readonly string TableCondensedCssClass = TableCssClass + " table-condensed";
 
         private static readonly HtmlString EmptyHtmlString = new HtmlString(String.Empty);
         private static readonly Regex CodeNameSplitRegex = new Regex(@"(?<=[.,;\<\(\[])");
@@ -338,7 +339,7 @@ namespace Vertesaur.Site
         public static HtmlString FlairIcon(FlairItem item) {
             string cssClass;
             if (SimpleIconClasses.TryGetValue(item.IconId, out cssClass))
-                return IconTag(cssClass, item.IconId);
+                return new HtmlString("<code class=\"flair-icon\">" + IconTag(cssClass, item.IconId) + "</code>");
 
             switch (item.IconId) {
                 case "get": return new HtmlString("<code class=\"flair-icon\" title=\"getter\">get</code>");
@@ -376,7 +377,7 @@ namespace Vertesaur.Site
 
         public static HtmlString FlairTable(IEnumerable<FlairItem> items) {
             var tagbuilder = new TagBuilder("table");
-            tagbuilder.MergeAttribute("class", "table table-bordered table-condensed");
+            tagbuilder.MergeAttribute("class", TableCondensedCssClass);
             var rowBuilder = new StringBuilder();
             foreach (var item in items.OrderBy(x => x.Category, StringComparer.OrdinalIgnoreCase)) {
                 rowBuilder.Append("<tr><th>");

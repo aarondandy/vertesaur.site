@@ -2,7 +2,8 @@
 @inherits ServiceStack.Razor.ViewPage
 @{
   Layout = "_DocsLayout";
-  ViewBag.Title = "All Namespaces";
+  ViewBag.Title = "API Reference";
+  ViewBag.TitleBarSubTitle = "All Namespaces";
   var codeDocRepositories = AppHost.TryResolve<CodeDocRepositories>();
 }
 <div class="container">

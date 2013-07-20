@@ -1,7 +1,7 @@
 ﻿@using DandyDoc.CodeDoc
 @using Vertesaur.Site
 @inherits ServiceStack.Razor.ViewPage<IEnumerable<ICodeDocMember>>
-<ul>
+<ul class="unstyled">
   @foreach (var namespaceModel in Model) {
     <li>@(this.ActionLink(namespaceModel))</li>
   }

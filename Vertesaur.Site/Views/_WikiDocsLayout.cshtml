@@ -1,0 +1,17 @@
+﻿@inherits ServiceStack.Razor.ViewPage<Vertesaur.Site.WikiDocsSlugResponse>
+@{
+  Layout = "_DocsLayout";
+  ViewBag.Title = "Documentation";
+  ViewBag.TitleBarSubTitle = Model.Title;
+}
+<div class="container">
+  <div class="row">
+    <section class="span12">
+      @if (!String.IsNullOrWhiteSpace(Model.Title)) {
+        <h1>@Model.Title</h1>
+      }
+      @Model.Body
+    </section>
+  </div>
+</div>
+

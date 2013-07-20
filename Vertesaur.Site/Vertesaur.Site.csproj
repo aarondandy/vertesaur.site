@@ -146,6 +146,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WikiDocsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -165,6 +166,7 @@
     <Content Include="Views\PartialCodeDocParameterDetails.cshtml" />
     <Content Include="Views\PartialCodeDocExceptionTable.cshtml" />
     <Content Include="Views\PartialCodeDocSimpleCodeContractTable.cshtml" />
+    <Content Include="Views\_WikiDocsLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
