@@ -16,6 +16,7 @@ using ServiceStack.ServiceInterface;
 namespace Vertesaur.Site
 {
 
+    [Route("/docs", "GET")]
     [Route("/docs/{Slug}", "GET")]
     public class WikiDocsSlugRequest
     {

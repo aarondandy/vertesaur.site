@@ -23,8 +23,8 @@ namespace Vertesaur.Site
     {
 
         public static WikiDocsItem GetWikiContent(string slug) {
-            if (String.IsNullOrWhiteSpace(slug)) throw new ArgumentException("Slug must be a valid wiki page name.", "slug");
-            Contract.EndContractBlock();
+            if (String.IsNullOrWhiteSpace(slug))
+                slug = "_Sidebar";
 
             var directory = new DirectoryInfo(HostingEnvironment.MapPath("~/docs/wiki/Content"));
             var fileName = slug;
@@ -43,6 +43,8 @@ namespace Vertesaur.Site
             response.RequestSlug = slug;
             response.Body = new HtmlString(html);
             response.Title = Path.GetFileNameWithoutExtension(fileInfo.Name).Replace('-', ' ');
+            if (response.Title == "_Sidebar")
+                response.Title = "Documentation";
 
             return response;
         }
