@@ -32,11 +32,11 @@ namespace Vertesaur.Site
             SupportingRepository = new CodeDocRepositoryFailureProtectionWrapper(new MsdnCodeDocMemberRepository(), new TimeSpan(0, 0, 10));
             TargetRepository = new ReflectionCodeDocMemberRepository(
                 new ReflectionCRefLookup(
-                    Assembly.ReflectionOnlyLoadFrom(HostingEnvironment.MapPath("~/bin/Docs/Files/Vertesaur.Core.dll")),
-                    Assembly.ReflectionOnlyLoadFrom(HostingEnvironment.MapPath("~/bin/Docs/Files/Vertesaur.Generation.dll"))
+                    Assembly.ReflectionOnlyLoadFrom(HostingEnvironment.MapPath("~/bin/Vertesaur.Core.dll")),
+                    Assembly.ReflectionOnlyLoadFrom(HostingEnvironment.MapPath("~/bin/Vertesaur.Generation.dll"))
                 ),
-                new XmlAssemblyDocument(HostingEnvironment.MapPath("~/bin/Docs/Files/Vertesaur.Core.XML")),
-                new XmlAssemblyDocument(HostingEnvironment.MapPath("~/bin/Docs/Files/Vertesaur.Generation.XML"))
+                new XmlAssemblyDocument(HostingEnvironment.MapPath("~/bin/Vertesaur.Core.XML")),
+                new XmlAssemblyDocument(HostingEnvironment.MapPath("~/bin/ertesaur.Generation.XML"))
             );
         }
 

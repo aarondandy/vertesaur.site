@@ -111,24 +111,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Vertesaur.Core, Version=0.8.5.38855, Culture=neutral, PublicKeyToken=7dcf54df3a00a0a5, processorArchitecture=MSIL" />
+    <Reference Include="Vertesaur.Generation, Version=0.8.5.38858, Culture=neutral, PublicKeyToken=7dcf54df3a00a0a5, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\Vertesaur.Core.0.8.5\lib\net40-client\Vertesaur.Core.dll">
-      <Link>docs\Files\Vertesaur.Core.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\Vertesaur.Core.0.8.5\lib\net40-client\Vertesaur.Core.XML">
-      <Link>docs\Files\Vertesaur.Core.XML</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\Vertesaur.Generation.0.8.5\lib\net40-client\Vertesaur.Generation.dll">
-      <Link>docs\Files\Vertesaur.Generation.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\Vertesaur.Generation.0.8.5\lib\net40-client\Vertesaur.Generation.XML">
-      <Link>docs\Files\Vertesaur.Generation.XML</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="css\bootstrap-responsive.css" />
     <Content Include="css\bootstrap-responsive.min.css" />
     <Content Include="css\bootstrap.css" />
