@@ -111,8 +111,12 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Vertesaur.Core, Version=0.8.5.38855, Culture=neutral, PublicKeyToken=7dcf54df3a00a0a5, processorArchitecture=MSIL" />
-    <Reference Include="Vertesaur.Generation, Version=0.8.5.38858, Culture=neutral, PublicKeyToken=7dcf54df3a00a0a5, processorArchitecture=MSIL" />
+    <Reference Include="Vertesaur.Core">
+      <HintPath>..\packages\Vertesaur.Core.0.8.5\lib\net40-client\Vertesaur.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Vertesaur.Generation">
+      <HintPath>..\packages\Vertesaur.Generation.0.8.5\lib\net40-client\Vertesaur.Generation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-responsive.css" />
