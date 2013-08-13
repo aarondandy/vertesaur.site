@@ -122,12 +122,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Vertesaur.Core.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Vertesaur.Generation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="css\bootstrap-responsive.css" />
     <Content Include="css\bootstrap-responsive.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\bootstrap.spruce.min.css" />
     <Content Include="css\site.css" />
+    <Content Include="docs\wiki\Content\Contributing.md" />
+    <Content Include="docs\wiki\Content\Core-Concepts.md" />
+    <Content Include="docs\wiki\Content\Getting-Started.md" />
+    <Content Include="docs\wiki\Content\Numerical-Values-in-Vertesaur.md" />
+    <Content Include="docs\wiki\Content\Vertesaur-Individual-Contributor-License-Agreement.md" />
+    <Content Include="docs\wiki\Content\_Sidebar.md" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
     <Content Include="js\bootstrap.js" />
@@ -141,7 +153,7 @@
     <Content Include="Views\CodeDocProperty.cshtml" />
     <Content Include="Views\PartialCodeDocAccessor.cshtml" />
     <None Include="Properties\PublishProfiles\mediocresoft.com.pubxml" />
-    <None Include="Views\PartialCodeDocEntityList.cshtml" />
+    <Content Include="Views\PartialCodeDocEntityList.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
