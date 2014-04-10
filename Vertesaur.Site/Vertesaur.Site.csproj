@@ -152,6 +152,7 @@
     <Content Include="Views\CodeDocMethod.cshtml" />
     <Content Include="Views\CodeDocProperty.cshtml" />
     <Content Include="Views\PartialCodeDocAccessor.cshtml" />
+    <None Include="Properties\PublishProfiles\Folder.pubxml" />
     <None Include="Properties\PublishProfiles\mediocresoft.com.pubxml" />
     <Content Include="Views\PartialCodeDocEntityList.cshtml" />
     <Content Include="Web.config">
